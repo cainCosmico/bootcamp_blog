@@ -1,15 +1,29 @@
-<h1>Articles</h1>
 
-Our blog has <%= Article.public_count %> articles and counting!
+<h1 class="text-2xl font-bold text-center">Articles</h1>
 
-<ul>
-  <% @articles.each do |article| %>
-    <% unless article.archived? %>    
-      <li>
-        <%= link_to article.title, article %>
-      </li>
-    <% end %>
-  <% end %>
-</ul>
+<div class="overflow-x-hidden">
+  <div class="px-6 py-8">
+    <div class="container flex justify-between mx-auto">
+      <div class="w-full ">
 
-<%= link_to "New Article", new_article_path %>
+        <div class="flex items-center justify-between">
+            <h1 class="text-xl font-bold text-gray-700 md:text-2xl">Our blog has <%= Article.public_count %> articles and counting!</h1>
+            <div>
+              <button class="btn-primary flex">
+                  <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                  </svg>
+                  <span class="ml-2"><%= link_to "New Article", new_article_path %></span>                  
+              </button>
+            </div>
+        </div>
+
+        <% @articles.each do |article| %>
+          <% unless article.archived? %>    
+              <%= render article %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

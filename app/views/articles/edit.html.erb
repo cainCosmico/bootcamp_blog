@@ -1,4 +1,8 @@
-<h1>Edit Article</h1>
+
+
+<% content_for :title do %>
+  <span>Edit Article</span>
+<% end %>
 
 <%= render "form", article: @article %>
 

@@ -1,22 +1,23 @@
-<div class="flex flex-wrap place-items-center ">
-  <section class="relative mx-auto">
-
-    <nav class="flex justify-between bg-gray-900 text-white w-screen">
-      <div class="px-5 xl:px-12 py-6 flex w-full items-center">
-        <a class="text-3xl font-bold font-heading" href="#">
-          <!-- <img class="h-9" src="logo.png" alt="logo"> -->
-          Bootcamp Blog.
-        </a>
+<nav class="px-6 py-4 text-gray-100 bg-gray-800 shadow">
+  <div class="container flex flex-col mx-auto md:flex-row md:items-center md:justify-between">
+    <div class="flex items-center justify-between">
+      <div>
+        <a href="<%= root_path %>" class="text-xl font-bold text-gray-100 md:text-2xl">Bootcamp Blog.</a>
       </div>
-
-      <a class="flex items-center hover:text-gray-200 mr-12" href="#">
+      <div>
+      </div>
+    </div>
+    <div class="flex-col  md:flex md:flex-row md:-mx-4">
+      <a href="<%= root_path %>" class="my-1 text-gray-100 hover:text-gray-200 md:mx-4 md:my-0">Home</a>
+      <a href="#" class="my-1 text-gray-100 hover:text-gray-200 md:mx-4 md:my-0">About us</a>
+      <a href="#" class="my-1 text-gray-100 hover:text-gray-200 md:mx-4 md:my-0">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 hover:text-gray-200" fill="none" viewBox="0 0 24 24"
           stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
             d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
         </svg>
       </a>
-    </nav>
-
-  </section>
-</div>
+      <button onclick="toggleDarkMode()">Toggle dark mode</button>
+    </div>
+  </div>
+</nav>

@@ -7,13 +7,13 @@
   }
 </style>
 
-<main class="relative top-1 container mx-auto bg-transparent px-4 ">
+<main class="relative top-1 container mx-auto bg-transparent px-4 py-8">
 
   <article class="max-w-prose mx-auto pb-8">
-    <h1 class="text-2xl font-bold"><%= @article.title %></h1>
-    <h2 class="mt-2 text-sm text-gray-500">Admin, <%= @article.updated_at.strftime("%b %d, %Y")  %> </h2>
+    <h1 class="text-2xl font-bold dark:text-gray-100"><%= @article.title %></h1>
+    <h2 class="mt-2 text-sm text-gray-500 dark:text-gray-100">Admin, <%= @article.updated_at.strftime("%b %d, %Y")  %> </h2>
 
-    <p class="text-justify mt-6"><%= @article.body %></p>
+    <p class="text-justify mt-6 dark:text-gray-400"><%= @article.body %></p>
   </article>
 
 </main>
@@ -24,17 +24,14 @@
     <button class="btn-primary flex">
         <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
-        </svg>
-        
+        </svg>        
         <span class="ml-2"><%= link_to "List", root_path %></span>
-    
     </button>
 
     <button class="btn-primary mx-5 flex">
         <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
         </svg>
-
         <span class="ml-2"><%= link_to "Edit", edit_article_path(@article) %></span>
     </button>
 
@@ -42,7 +39,6 @@
         <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z" />
         </svg>
-
         <span class="ml-2"><%= link_to "Remove", article_path(@article),
                                 method: :delete,
                                 data: { confirm: "Are you sure?" } %></span>
@@ -53,11 +49,11 @@
 
 <main class="relative top-1 container mx-auto bg-transparent px-4 ">
   <article class="max-w-prose mx-auto py-8">
-    <h2 class="text-xl font-bold mb-6">Comments</h2>
+    <h2 class="text-xl font-bold mb-6 dark:text-gray-100">Comments</h2>
     <%= render @article.comments %>
 
     <br>
-    <h2 class="text-xl font-bold mb-6">Add a comment:</h2>
+    <h2 class="text-xl font-bold mb-6 dark:text-gray-100">Add a comment:</h2>
     <%= render 'comments/form' %>
   </article>
 </main>  

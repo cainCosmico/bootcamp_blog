@@ -1,0 +1,52 @@
+<% content_for :content do %>
+  <% content_for :title do %>
+    <span>Edit <%= resource_name.to_s.humanize %></span>
+  <% end %>  
+
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+    <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 md:grid-cols-5">
+      <%= render "devise/shared/error_messages", resource: resource %>
+      <div class="field">
+        <%= f.label :email, class:"dark:text-gray-100" %><br />
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "custom_field border-grey-light" %>
+      </div>
+
+      <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+        <div class="dark:text-gray-100">Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+      <% end %>
+
+      <div class="field">
+        <%= f.label :password, class:"dark:text-gray-100" %> <i class="dark:text-gray-100">(leave blank if you don't want to change it)</i><br />
+        <%= f.password_field :password, autocomplete: "new-password", class: "custom_field border-grey-light" %>
+        <% if @minimum_password_length %>          
+          <em class="dark:text-gray-100"><%= @minimum_password_length %> characters minimum</em>
+        <% end %>
+      </div>
+
+      <div class="field">
+        <%= f.label :password_confirmation, class:"dark:text-gray-100" %><br />
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "custom_field border-grey-light" %>
+      </div>
+
+      <div class="field">
+        <%= f.label :current_password, class:"dark:text-gray-100" %> <i class="dark:text-gray-100">(we need your current password to confirm your changes)</i><br />
+        <%= f.password_field :current_password, autocomplete: "current-password", class: "custom_field border-grey-light" %>
+      </div>
+
+      <div class="md:col-span-5">
+        <div class="inline-flex items-end">
+          <%= f.submit "Update", class:"btn_submit" %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+  <br>
+  <h3 class="dark:text-gray-100">Cancel my account. Unhappy?</h3>
+  <br>
+  <div class="flex items-center justify-between">
+    <%= link_to "Back", :back, class:"btn_cancel" %>
+    <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, class:"btn_cancel",method: :delete %>
+  </div>
+<% end %>
+
+<%= render "shared/form" %>

@@ -13,6 +13,8 @@
 
   <body class="font-sans dark:bg-gray-700">
     <%= render "shared/header" %>  
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
     <%= yield %>
     <%= render "shared/footer" %>
   </body>

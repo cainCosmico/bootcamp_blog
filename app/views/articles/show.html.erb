@@ -9,4 +9,14 @@
                   method: :delete,
                   data: { confirm: "Are you sure?" } %></li>
   <li><%= link_to "List", root_path %></li>
-</ul
+</ul>
+
+<br>
+
+<h2>Comments</h2>
+<%= render @article.comments %>
+
+<br>
+
+<h2>Add a comment:</h2>
+<%= render 'comments/form' %>

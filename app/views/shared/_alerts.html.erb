@@ -1,0 +1,33 @@
+<div class="flex items-center justify-center py-6">
+  <div class="container">
+
+    <% if notice %>
+      <div
+        class="py-3 px-5 mb-4 bg-gray-100 text-gray-900 rounded-md text-sm border border-gray-200 flex items-center justify-between"
+        role="alert">
+        <span><p class="notice"><%= notice %></p></span>
+        <button class="w-4" type="button" data-dismiss="alert" aria-label="Close"
+        onclick="this.parentElement.remove();">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+        </svg>
+        </button>
+      </div>
+    <% end %>
+
+    <% if alert %>
+      <div
+        class="py-3 px-5 mb-4 bg-yellow-100 text-yellow-900 text-sm rounded-md border border-yellow-200 flex items-center justify-between"
+        role="alert">
+        <span><p class="alert"><%= alert %></p></span>
+        <button class="w-4" type="button" data-dismiss="alert" aria-label="Close"
+        onclick="this.parentElement.remove();">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+        </svg>
+        </button>
+      </div>
+    <% end %>
+
+  </div>
+</div>

@@ -1,26 +1,52 @@
 <%= form_with model: article do |form| %>
-  <div>
-    <%= form.label :title %><br>
-    <%= form.text_field :title %>
-    <% article.errors.full_messages_for(:title).each do |message| %>
-      <div><%= message %></div>
-    <% end %>
-  </div>
+  <main class="relative container mx-auto bg-transparent px-4 py-8 h-screen">
+    <article class="max-w-prose mx-auto pb-8">
+      <h1 class="text-2xl font-bold dark:text-gray-100"> <%= yield :title %> </h1>
 
-  <div>
-    <%= form.label :body %><br>
-    <%= form.text_area :body %><br>
-    <% article.errors.full_messages_for(:body).each do |message| %>
-      <div><%= message %></div>
-    <% end %>
-  </div>
+      <div class="flex items-center justify-center">
+        <div class="container max-w-screen-lg mx-auto">
 
-  <div>
-    <%= form.label :status %><br>
-    <%= form.select :status, ['public', 'private', 'archived'], selected: 'public' %>
-  </div>
+          <div class="bg-white dark:bg-gray-600 rounded shadow-lg p-4 px-4 md:p-8 mb-6">
+            <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 ">
 
-  <div>
-    <%= form.submit %>
-  </div>
+              <div class="lg:col-span-2">
+                <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 md:grid-cols-5">
+                  <div class="md:col-span-5">
+                    <%= form.label :title, class:"dark:text-gray-100" %>
+                    <%= form.text_field :title, class:"block border border-grey-light w-full p-3 rounded mb-4" %>
+                    <% article.errors.full_messages_for(:title).each do |message| %>
+                      <div class="dark:text-gray-100"><%= message %></div>
+                    <% end %>
+                  </div>
+
+                  <div class="md:col-span-5">                                                     
+                    <%= form.label :body , class:"dark:text-gray-100" %><br>                  
+                    <%= form.text_area :body, size: "70x10", class: "block border border-grey-light w-full p-3 rounded mb-4" %><br>
+                    <% article.errors.full_messages_for(:body).each do |message| %>
+                      <div class="dark:text-gray-100><%= message %></div>
+                    <% end %>
+                  </div>
+
+                  <div class="md:col-span-2">
+                    <%= form.label :status, class:"dark:text-gray-100" %>
+                    <%= form.select :status, ['public', 'private', 'archived'], selected: 'public' %>
+                  </div>
+
+                  <div class="md:col-span-5 text-right">
+                    <div class="inline-flex items-end">                    
+                      <%= form.submit class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" %>                  
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+            </div>
+          </div>
+          
+        </div>
+      </div>
+
+    </article>
+  </main>
 <% end %>

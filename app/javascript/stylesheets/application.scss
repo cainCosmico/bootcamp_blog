@@ -5,21 +5,37 @@
 @import "tailwindcss/utilities";
 
 @layer components {
-    @variants responsive, hover {
-        .btn-blue {
-            @apply py-2 px-4 bg-blue-500 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75;
-        }
-        .btn-red {
-            @apply py-2 px-4 bg-red-500 text-white font-semibold rounded-lg shadow-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-400 focus:ring-opacity-75;
-        }
-        .btn_outline {
-            @apply py-2 px-4 bg-transparent  border-2 text-indigo-500  border-indigo-500 font-semibold rounded-lg shadow-md    hover:bg-indigo-500 hover:text-gray-100 focus:border-4 focus:border-indigo-300 focus:outline-none focus:ring-2 focus:ring-red-400 focus:ring-opacity-75;
-        }
-        .btn-primary {
-            @apply px-4 py-3 bg-blue-600 rounded-md text-white outline-none focus:ring-4 shadow-lg ;
-        }
-        .btn-secondary {
-            @apply px-4 py-3 bg-blue-600 rounded-md text-white outline-none focus:ring-4 shadow-lg transform;
-        }
+  @variants responsive, hover {
+    .btn-blue {
+      @apply py-2 px-4 bg-blue-500 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75;
     }
+    .btn-red {
+      @apply py-2 px-4 bg-red-500 text-white font-semibold rounded-lg shadow-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-400 focus:ring-opacity-75;
+    }
+    .btn_outline {
+      @apply py-2 px-4 bg-transparent  border-2 text-indigo-500  border-indigo-500 font-semibold rounded-lg shadow-md    hover:bg-indigo-500 hover:text-gray-100 focus:border-4 focus:border-indigo-300 focus:outline-none focus:ring-2 focus:ring-red-400 focus:ring-opacity-75;
+    }
+    .btn-primary {
+      @apply px-4 py-3 bg-blue-600 rounded-md text-white outline-none focus:ring-4 shadow-lg ;
+    }
+    .btn-secondary {
+      @apply px-4 py-3 bg-blue-600 rounded-md text-white outline-none focus:ring-4 shadow-lg transform;
+    }
+
+    .custom_field {
+      @apply block border w-full p-3 rounded mb-4;
+    }
+    .field {
+      @apply md:col-span-5;
+    }
+    .btn_submit {
+      @apply bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded;
+    }
+    .btn_cancel {
+      @apply bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded;
+    }
+    .nav_item {
+      @apply my-1 text-gray-100 hover:text-gray-200 md:mx-4 md:my-0;
+    }
+  }
 }

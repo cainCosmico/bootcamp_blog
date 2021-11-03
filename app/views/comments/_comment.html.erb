@@ -14,10 +14,12 @@
       </div>
     </div>
     <p class="text-gray-800 dark:text-gray-400 text-sm mt-2 leading-normal md:leading-relaxed"><%= comment.body %></p>
-    <div class="text-gray-500 text-xs flex items-center mt-3">    
+    <div class="text-gray-500 text-xs flex items-center mt-3"> 
+      <% if user_signed_in? %>   
       <span class="ml-1"><%= link_to 'Destroy Comment', [comment.article, comment],
                                       method: :delete,
                                       data: { confirm: "Are you sure?" } %></span>
+      <% end %>
     </div>
   </div>
 <% end %>

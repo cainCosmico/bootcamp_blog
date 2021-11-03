@@ -9,15 +9,14 @@
       </div>
     </div>
     <div class="flex-col  md:flex md:flex-row md:-mx-4">
-      <a href="<%= root_path %>" class="my-1 text-gray-100 hover:text-gray-200 md:mx-4 md:my-0">Home</a>
-      <a href="#" class="my-1 text-gray-100 hover:text-gray-200 md:mx-4 md:my-0">About us</a>
-      <a href="#" class="my-1 text-gray-100 hover:text-gray-200 md:mx-4 md:my-0">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 hover:text-gray-200" fill="none" viewBox="0 0 24 24"
-          stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-            d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-        </svg>
-      </a>
+      <a href="<%= root_path %>" class="nav_item">Home</a>            
+      <% if user_signed_in? %>
+        <%= link_to "Hi, #{current_user.email}", edit_user_registration_path, class: "nav_item" %>
+        <%= link_to 'Sign Out', destroy_user_session_path, method: :delete, class: "nav_item" %>
+      <% else %>
+        <%= link_to 'Sign In', new_user_session_path, class: "nav_item" %>
+        <%= link_to 'Sign Up', new_user_registration_path, class: "nav_item" %>
+      <% end %>      
       <button class="toggle-dark-mode-btn">Toggle dark mode</button>
     </div>
   </div>

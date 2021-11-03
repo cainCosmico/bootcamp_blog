@@ -1,0 +1,24 @@
+<% content_for :content do %>
+  <% content_for :title do %>
+    <span>Resend confirmation instructions</span>
+  <% end %>
+
+  <%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
+    <%= render "devise/shared/error_messages", resource: resource %>
+
+    <div class="field">
+      <%= f.label :email, class:"dark:text-gray-100" %><br />
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email), class:"custom_field border-grey-light" %>
+    </div>
+
+    <div class="field">
+      <div class="inline-flex items-end">
+        <%= f.submit "Resend confirmation instructions", class:"btn_submit" %>
+      </div>
+    </div>    
+  <% end %>
+  <br>
+  <%= render "devise/shared/links" %>
+<% end %>
+
+<%= render "shared/form" %>

@@ -28,6 +28,8 @@
         <span class="ml-2"><%= link_to "List", root_path %></span>
     </button>
 
+    <% if user_signed_in? %>    
+
     <button class="btn-primary mx-5 flex">
         <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
@@ -43,6 +45,8 @@
                                 method: :delete,
                                 data: { confirm: "Are you sure?" } %></span>
     </button>
+
+    <% end %>
 </div>
 
 <br>
@@ -53,8 +57,14 @@
     <%= render @article.comments %>
 
     <br>
-    <h2 class="text-xl font-bold mb-6 dark:text-gray-100">Add a comment:</h2>
-    <%= render 'comments/form' %>
+
+    <% if user_signed_in? %>
+      <h2 class="text-xl font-bold mb-6 dark:text-gray-100">Add a comment:</h2>
+      <%= render 'comments/form' %>
+    <% else %>
+      <p>Sign in to comment</p>
+    <% end %>
+
   </article>
 </main>  
 

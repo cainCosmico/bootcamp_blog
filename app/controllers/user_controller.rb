@@ -9,8 +9,7 @@ class UserController < ApplicationController
   def follow
     @user = User.find(params[:id])
     current_user.followees << @user
-    # redirect_to root_path
-    redirect_to :back
+    redirect_to root_path
   end
   
   def unfollow

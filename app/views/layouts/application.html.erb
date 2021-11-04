@@ -23,25 +23,5 @@
 
   </body>
 
-  <script>
-    const body = document.getElementsByTagName('body')[0];
-
-    function toggleDarkMode() {
-      if(body.classList.contains('dark')) {
-        body.classList.remove('dark');
-        localStorage.theme = 'light'
-      } else {
-        body.classList.add('dark');
-        localStorage.theme = 'dark'
-      }
-
-      if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-        document.documentElement.classList.add('dark')
-      } else {
-        document.documentElement.classList.remove('dark')
-      }
-
-    }
-  </script>
-
+  <%= javascript_pack_tag 'toggle_dark_mode' %>
 </html>

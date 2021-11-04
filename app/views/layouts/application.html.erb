@@ -12,15 +12,13 @@
   </head>
 
   <body class="font-sans dark:bg-gray-700 bg-gray-100">
-  <%= render "shared/header" %> 
-  <%= render "shared/alerts" %>
-  <div class="container mx-auto max-w-4xl">
-    <div class="h-auto px-48 sm:px-4 mb-48">
-    <%= yield %>
+    <%= render "shared/header" %> 
+    <%= render "shared/alerts" %>
+    <div class="container mx-auto max-w-4xl">
+      <div class="h-auto mb-48 sm:mx-4">
+        <%= yield %>
+      </div>
     </div>
-  </div>
-
-
   </body>
 
   <%= javascript_pack_tag 'toggle_dark_mode' %>

@@ -2,11 +2,8 @@
   <h1 class="dark:text-gray-100 text-2xl font-bold">Articles</h1>
   <% if user_signed_in? %>        
     <div>
-      <button class="btn-primary flex">
-          <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
-          </svg>
-          <span class="ml-2"><%= link_to "New Article", new_article_path %></span>                  
+      <button class="btn_submit flex">          
+          <span><%= link_to "New Article", new_article_path %></span>                  
       </button>
     </div>
   <% end %>

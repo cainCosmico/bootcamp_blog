@@ -1,32 +1,19 @@
-<div class="overflow-x-hidden">
-  <div class="px-6 py-8">
-    <div class="container flex justify-between mx-auto">
-      <div class="w-full">
-        <h1 class="dark:text-gray-100 text-2xl font-bold text-center">Articles</h1>
-        <br>
-        <div class="flex items-center justify-between max-w-4xl mx-auto">
-            <h1 class="dark:text-gray-100 text-xl font-bold md:text-2xl">Our blog has <%= Article.public_count %> articles and counting!</h1>
-            
-            <% if user_signed_in? %>        
-              <div>
-                <button class="btn-primary flex">
-                    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
-                    </svg>
-                    <span class="ml-2"><%= link_to "New Article", new_article_path %></span>                  
-                </button>
-              </div>
-            <% end %>
-
-        </div>
-
-        <% @articles.each do |article| %>
-          <% unless article.archived? %>    
-              <%= render article %>
-          <% end %>
-        <% end %>
-      </div>
+<div class="flex justify-between max-w-4xl mx-auto mb-8">
+  <h1 class="dark:text-gray-100 text-2xl font-bold">Articles</h1>
+  <% if user_signed_in? %>        
+    <div>
+      <button class="btn-primary flex">
+          <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+          </svg>
+          <span class="ml-2"><%= link_to "New Article", new_article_path %></span>                  
+      </button>
     </div>
-  </div>
-
+  <% end %>
 </div>
+
+<% @articles.each do |article| %>
+  <% unless article.archived? %>    
+      <%= render article %>
+  <% end %>
+<% end %>

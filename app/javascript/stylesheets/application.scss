@@ -35,7 +35,10 @@
       @apply bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded;
     }
     .nav_item {
-      @apply my-1 text-gray-100 hover:text-gray-200 md:mx-4 md:my-0;
+      @apply text-gray-700 dark:text-gray-100 my-1 hover:text-gray-500 md:mx-4 md:my-0 text-base font-semibold;
+    }
+    .post-item {
+      @apply dark:bg-gray-600 bg-white px-10 py-8 mx-auto rounded-lg shadow-md mb-8
     }
   }
 }

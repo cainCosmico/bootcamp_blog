@@ -1,13 +1,13 @@
-<nav class="px-6 py-4 text-gray-100 bg-gray-800 shadow">
+<nav class=" px-6 py-4 dark:text-gray-100 text-gray-700 dark:bg-gray-600 bg-gray-50 shadow">
   <div class="container flex flex-col mx-auto md:flex-row md:items-center md:justify-between">
-    <div class="flex items-center justify-between">
+    <div class="flex items-center justify-between max-w-4xl">
       <div>
-        <a href="<%= root_path %>" class="text-xl font-bold text-gray-100 md:text-2xl">Bootcamp Blog.</a>
+        <a href="<%= root_path %>" class="text-xl font-semibold dark:text-gray-100 text-gray-700 md:text-2xl">Bootcamp Blog.</a>
       </div>
       <div>
       </div>
     </div>
-    <div class="flex-col  md:flex md:flex-row md:-mx-4">
+    <div class="flex-col md:flex md:flex-row md:-mx-4">
       <a href="<%= root_path %>" class="nav_item">Home</a>            
       <% if user_signed_in? %>
         <%= link_to "Hi, #{current_user.email}", edit_user_registration_path, class: "nav_item" %>

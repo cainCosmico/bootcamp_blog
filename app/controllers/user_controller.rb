@@ -8,13 +8,13 @@ class UserController < ApplicationController
 
   def follow
     @user = User.find(params[:id])
-    current_user.followees << @user
+    current_user.followeds << @user
     redirect_to root_path
   end
   
   def unfollow
     @user = User.find(params[:id])
-    current_user.followed_users.find_by(followee_id: @user.id).destroy
+    current_user.followed_users.find_by(followed_id: @user.id).destroy
     redirect_to root_path
   end
 
@@ -23,6 +23,6 @@ class UserController < ApplicationController
   end
 
   def following
-    @following = current_user.followees
+    @followeds = current_user.followeds
   end
 end

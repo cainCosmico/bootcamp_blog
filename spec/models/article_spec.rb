@@ -41,4 +41,15 @@ RSpec.describe Article, type: :model do
     it { should belong_to(:user).without_validating_presence }
     it { should have_many(:comments) }
   end
+
+  context 'module visible' do
+    it 'return false when status public' do
+      expect(subject.archived?).to eq(false)
+    end
+    
+    it 'return true when status archived' do
+      subject.status = 'archived'
+      expect(subject.archived?).to eq(true)
+    end
+  end
 end

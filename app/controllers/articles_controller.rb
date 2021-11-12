@@ -16,7 +16,7 @@ class ArticlesController < ApplicationController
   def create
     @article = current_user.articles.create(article_params)
     if @article.save
-      redirect_to @article
+      redirect_to @article, notice: 'Article successfully created.'
     else
       render :new
     end

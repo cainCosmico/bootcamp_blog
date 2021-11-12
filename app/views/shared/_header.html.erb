@@ -1,14 +1,13 @@
-
-<nav class="px-6 py-4 text-gray-100 bg-gray-800 shadow">
+<nav class=" px-6 py-4 dark:text-gray-100 text-gray-700 dark:bg-gray-600 bg-white shadow">
   <div class="container flex flex-col mx-auto md:flex-row md:items-center md:justify-between">
-    <div class="flex items-center justify-between">
+    <div class="flex items-center justify-between max-w-4xl">
       <div>
-        <a href="<%= root_path %>" class="text-xl font-bold text-gray-100 md:text-2xl">Bootcamp Blog.</a>
+        <a href="<%= root_path %>" class="text-xl font-semibold dark:text-gray-100 text-gray-700 md:text-2xl">Bootcamp Blog.</a>
       </div>
       <div>
       </div>
     </div>
-    <div class="flex-col  md:flex md:flex-row md:-mx-4">
+    <div class="flex-col md:flex md:flex-row md:-mx-4">
       <a href="<%= root_path %>" class="nav_item">Home</a>            
       <% if user_signed_in? %>
         <%= link_to "Hi, #{current_user.email}", edit_user_registration_path, class: "nav_item" %>
@@ -17,7 +16,13 @@
         <%= link_to 'Sign In', new_user_session_path, class: "nav_item" %>
         <%= link_to 'Sign Up', new_user_registration_path, class: "nav_item" %>
       <% end %>      
-      <button class="toggle-dark-mode-btn">Toggle dark mode</button>
+      <button class="toggle-dark-mode-btn">
+        <svg xmlns="http://www.w3.org/2000/svg" 
+             class="h-5 w-5 nav_item font-semibold" 
+             viewBox="0 0 20 20" fill="currentColor">
+          <path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd" />
+        </svg>
+      </button>
     </div>
   </div>
 </nav>

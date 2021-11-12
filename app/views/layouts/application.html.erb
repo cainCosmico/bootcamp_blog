@@ -5,19 +5,20 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body class="font-sans dark:bg-gray-700">
-    <%= render "shared/header" %>  
-
-    <%= render "shared/alerts" %>    
-
-    <%= yield %>
-    <%= render "shared/footer" %>
+  <body class="font-sans dark:bg-gray-700 bg-gray-100">
+    <%= render "shared/header" %> 
+    <%= render "shared/alerts" %>
+    <div class="container mx-auto max-w-4xl">
+      <div class="h-auto mb-48 sm:mx-4">
+        <%= yield %>
+      </div>
+    </div>
   </body>
 
   <%= javascript_pack_tag 'toggle_dark_mode' %>

@@ -7,41 +7,43 @@
   }
 </style>
 
-<main class="relative top-1 container mx-auto bg-transparent px-4 py-8">
+<article class="post-item">
+  <h1 class="text-2xl font-bold dark:text-gray-100"><%= @article.title %></h1>
+  <h2 class="mt-2 text-sm text-gray-500 dark:text-gray-100">
+    <a href="<%= user_path(User.find(@article.user_id)) %>">
+      <span class="hover:underline">
+        <%= User.find(@article.user_id).email %>
+      </span>
+    </a>
+    <% if current_user != User.find(@article.user_id) %>
+      <span class="dark:text-gray-100 mx-1"> • </span>
+      <% if user_signed_in? %>
+        <% if current_user.followeds.include?( Follow.where(follower_id: current_user.id, followed_id: User.find(@article.user_id).id ).first ) %>
+          <%= link_to "Unfollow", unfollow_user_path(User.find(@article.user_id)), method: "POST", class: "font-semibold text-blue-500" %>
+        <% else %>
+          <%= link_to "follow", follow_user_path(User.find(@article.user_id)), method: "POST", class: "font-semibold text-blue-500" %>
+        <% end%>
+      <% end %>
+    <% end %>
+  </h2>
+  <h2 class="mt-2 text-sm text-gray-500 dark:text-gray-100">
+    <%= @article.updated_at.strftime("%b %d, %Y") %> 
+  </h2>
 
-  <article class="max-w-prose mx-auto pb-8">
-    <h1 class="text-2xl font-bold dark:text-gray-100"><%= @article.title %></h1>
-    <h2 class="mt-2 text-sm text-gray-500 dark:text-gray-100">Admin, <%= @article.updated_at.strftime("%b %d, %Y")  %> </h2>
+  <p class="text-justify mt-6 dark:text-gray-400"><%= @article.body %></p>
+</article>
 
-    <p class="text-justify mt-6 dark:text-gray-400"><%= @article.body %></p>
-  </article>
 
-</main>
-
-<!-- component -->
-<div class="mx-auto flex justify-center items-center">
-
-    <button class="btn-primary flex">
-        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
-        </svg>        
-        <span class="ml-2"><%= link_to "List", root_path %></span>
-    </button>
+<div class="mx-auto flex justify-center items-center mb-8">
 
     <% if user_signed_in? %>    
 
-    <button class="btn-primary mx-5 flex">
-        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-        </svg>
-        <span class="ml-2"><%= link_to "Edit", edit_article_path(@article) %></span>
+    <button class="btn_submit flex">        
+        <span><%= link_to "Edit", edit_article_path(@article) %></span>
     </button>
 
-    <button class="btn-secondary flex" >
-        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z" />
-        </svg>
-        <span class="ml-2"><%= link_to "Remove", article_path(@article),
+    <button class="btn_submit flex" >
+        <span><%= link_to "Remove", article_path(@article),
                                 method: :delete,
                                 data: { confirm: "Are you sure?" } %></span>
     </button>
@@ -49,24 +51,22 @@
     <% end %>
 </div>
 
+<h2 class="text-xl font-bold mb-6 dark:text-gray-100">Comments (<%= @article.comments.length %>)</h2>
+<%= render @article.comments %>
 <br>
 
-<main class="relative top-1 container mx-auto bg-transparent px-4 ">
-  <article class="max-w-prose mx-auto py-8">
-    <h2 class="text-xl font-bold mb-6 dark:text-gray-100">Comments</h2>
-    <%= render @article.comments %>
+<% if user_signed_in? %>
+  <% if current_user.followeds.include?( Follow.where(follower_id: current_user.id, followed_id: User.find(@article.user_id).id ).first ) || current_user == User.find(@article.user_id) %>
+    <h2 class="text-xl font-bold mb-6 dark:text-gray-100">Add a comment:</h2>
+    <%= render 'comments/form' %>
+  <% else %>
+    <p class="text-xl font-bold mb-6 dark:text-gray-100">Follow blogger to comment</p>
+  <% end %>
+<% else %>
+  <p class="text-xl font-bold mb-6 dark:text-gray-100">Sign in to comment</p>
+<% end %>
 
-    <br>
 
-    <% if user_signed_in? %>
-      <h2 class="text-xl font-bold mb-6 dark:text-gray-100">Add a comment:</h2>
-      <%= render 'comments/form' %>
-    <% else %>
-      <p>Sign in to comment</p>
-    <% end %>
-
-  </article>
-</main>  
 
 
 

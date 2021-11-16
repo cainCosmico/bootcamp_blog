@@ -8,10 +8,18 @@
       </div>
     </div>
     <div class="flex-col md:flex md:flex-row md:-mx-4">
-      <a href="<%= root_path %>" class="nav_item">Home</a>            
+      <a href="<%= root_path %>" class="nav_item">Home</a>
       <% if user_signed_in? %>
-        <%= link_to "Hi, #{current_user.email}", edit_user_registration_path, class: "nav_item" %>
+        <a href="#" class="nav_item"> <%= current_user.email %> </a>
+        <%= link_to "edit user", edit_user_registration_path, class: "nav_item" %>
         <%= link_to 'Sign Out', destroy_user_session_path, method: :delete, class: "nav_item" %>
+        <form action="<%= user_path(current_user.id) %>">
+          <button type="submit">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />
+            </svg>
+          </button>
+        </form>
       <% else %>
         <%= link_to 'Sign In', new_user_session_path, class: "nav_item" %>
         <%= link_to 'Sign Up', new_user_registration_path, class: "nav_item" %>
